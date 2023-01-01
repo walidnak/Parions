@@ -1,0 +1,73 @@
+﻿<UserControl
+    x:Class="Parions.Views.RejoindreLequipeView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:Parions.ValueConverters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:li="clr-namespace:LoadingIndicators.WPF;assembly=LoadingIndicators.WPF"
+    xmlns:local="clr-namespace:Parions.Views"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <converters:ButtonVisibilityConverter x:Key="BtnConverter" />
+    </UserControl.Resources>
+
+    <Border
+        Padding="30"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        Background="#0995b2"
+        BorderThickness="0"
+        CornerRadius="300,300,300,300">
+
+        <StackPanel Margin="20">
+
+            <TextBox
+                x:Name="NomDutilisateur"
+                Width="250"
+                Margin="0,0,0,20"
+                Padding="5"
+                materialDesign:HintAssist.Hint="Nom d'utilisateur"
+                Background="WhiteSmoke"
+                FontSize="18" />
+
+            <TextBox
+                x:Name="ServerUrl"
+                Width="250"
+                Margin="0,0,0,20"
+                Padding="5"
+                materialDesign:HintAssist.Hint="URL"
+                Background="WhiteSmoke"
+                FontSize="18" />
+
+            <Grid>
+                <Button
+                    x:Name="RejoindreCommande"
+                    Width="100"
+                    Height="45"
+                    Padding="10"
+                    materialDesign:ButtonAssist.CornerRadius="5"
+                    Background="#09afd1"
+                    BorderThickness="0"
+                    Content="Rejoindre"
+                    FontSize="18"
+                    Visibility="{Binding BtnVisibility}" />
+
+                <li:LoadingIndicator
+                    Width="50"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Foreground="White"
+                    SpeedRatio="1"
+                    Style="{StaticResource LoadingIndicatorArcsRingStyleKey}"
+                    Visibility="{Binding BtnVisibility, Converter={StaticResource BtnConverter}}" />
+            </Grid>
+
+        </StackPanel>
+
+    </Border>
+</UserControl>

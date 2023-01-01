@@ -1,0 +1,66 @@
+﻿<UserControl
+    x:Class="Parions.Views.CreerUnServeurView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:Parions.ValueConverters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:li="clr-namespace:LoadingIndicators.WPF;assembly=LoadingIndicators.WPF"
+    xmlns:local="clr-namespace:Parions.Views"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <converters:ButtonVisibilityConverter x:Key="BtnConverter" />
+    </UserControl.Resources>
+
+    <Border
+        Padding="30"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        Background="#0995b2"
+        BorderThickness="0"
+        CornerRadius="1000" Height="312" Width="326">
+
+        <StackPanel Margin="20,20,9,-10">
+
+            <TextBox
+                x:Name="NombreDeJoueurs" Width="200" Margin="0,0,0,20"  Padding="5"  materialDesign:HintAssist.Foreground="Black" materialDesign:HintAssist.Hint="Nombre de joueurs" materialDesign:HintAssist.IsFloating="True" Background="WhiteSmoke" BorderBrush="DarkGray"  FontSize="18"  FontWeight="Bold" />
+
+            <TextBox
+                x:Name="NombreDeTours"
+                Margin="0,0,0,20"
+                Padding="5"
+                materialDesign:HintAssist.Foreground="Black" materialDesign:HintAssist.Hint="Nombre de tours" materialDesign:HintAssist.IsFloating="True" Background="WhiteSmoke" FontSize="18"  FontWeight="Bold" />
+
+            <Grid>
+
+                <Button
+                    x:Name="CreerCommande"
+                    Height="45"
+                    Padding="10"
+                    materialDesign:ButtonAssist.CornerRadius="5"
+                    Background="#09afd1"
+                    BorderThickness="0"
+                    Content="Creer"
+                    FontSize="18"
+                    Visibility="{Binding BtnVisibility}" />
+
+                <li:LoadingIndicator
+                    Width="50"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Foreground="White"
+                    SpeedRatio="1"
+                    Style="{StaticResource LoadingIndicatorArcsRingStyleKey}"
+                    Visibility="{Binding BtnVisibility, Converter={StaticResource BtnConverter}}" />
+            </Grid>
+
+
+
+        </StackPanel>
+
+    </Border>
+</UserControl>
